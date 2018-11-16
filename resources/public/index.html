@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vinlotteri</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/popover.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://unpkg.com/v-tooltip"></script>
+    <script src="https://unpkg.com/vue-select@latest"></script>
+    <script src="https://unpkg.com/vue-async-computed@3.4.1"></script>
+</head>
+<body>
+<div id="app">
+    <h1>Vinlotteri</h1>
+    <img src="/img/skaal.png">
+    <div v-if="!ticketdrawing">
+        <button class="m-button" v-on:click="ticketdrawing = !ticketdrawing">Gå til loddtrekking</button>
+        <div id="vipps">Vipps til: <input type="text" id="phone"></div>
+        <div class="group">
+            <div><label>Navn: <input v-model="uName" v-on:keyup.enter="addTickets()" type="text"></label></div>
+            <div><label>Lodd: <input v-model="uTickets" v-on:keyup.enter="addTickets()" min="1" type="number"></label></div>
+            <button class="a-button" v-on:click="addTickets()">Legg til</button>
+        </div>
+        <table v-if="tickets.length" class="group">
+            <tr v-for="(ticket,i) in tickets">
+                <td>{{ticket}}</td>
+                <td><button class="r-button" v-on:click="removeTicket(i)">Fjern</button></td>
+            </tr>
+        </table>
+    </div>
+    <div v-if="ticketdrawing">
+        <div><button class="m-button" v-on:click="ticketdrawing = !ticketdrawing">Legg til flere lodd</button></div>
+        <div><button class="a-button" v-on:click="drawTicket">Trekk lodd</button></div>
+        <table>
+            <h1 class="winner" v-if="winner">{{winner}}</h1>
+            <tr v-if="previousWinners.length" v-for="(ticket,i) in previousWinners">
+                <td>{{ticket}}</td>
+                <td><button class="r-button" v-on:click="undoDrawing(i)">Legg tilbake lodd</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="/js/index.js"></script>
+</body>
+</html>
