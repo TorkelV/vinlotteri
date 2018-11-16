@@ -20,7 +20,7 @@
         <div id="vipps">Vipps til: <input type="text" id="phone"></div>
         <div class="group">
             <div><label>Navn: <input v-model="uName" v-on:keyup.enter="addTickets()" type="text"></label></div>
-            <div><label>Lodd: <input v-model="uTickets" v-on:keyup.enter="addTickets()" min="1" type="number"></label></div>
+            <div><label>Lodd: <input v-model.number="uTickets" v-on:keyup.enter="addTickets()" min="1" type="number"></label></div>
             <button class="a-button" v-on:click="addTickets()">Legg til</button>
         </div>
         <table v-if="tickets.length" class="group">
