@@ -12,6 +12,14 @@ body{
     background-color: #2ECC40;
 }
 
+.red{
+    color: #FF4136;
+}
+
+.green{
+    color:  #2ECC40;
+}
+
 .group{
     box-shadow: 1px 3px 13px 1.5px rgba(0,0,0,0.3);
     border-radius: 10px;
@@ -86,11 +94,10 @@ table{
 
 
 
-.winner {
+#winner {
     margin:20px;
     padding: 20px;
     font-size: 100px;
-    color: #2ECC40;
     font-weight: bold;
 }
 

@@ -8,7 +8,10 @@ var app = new Vue({
         previousWinners: [],
         ticketdrawing: false,
         uTickets: 1,
+        winningNumber: -1,
         uName: "",
+        wColor: 'red',
+        drawing: false,
     },
     components: {},
     computed: {},
@@ -23,15 +26,22 @@ var app = new Vue({
             }
         },
         drawTicket() {
+            this.drawing = true;
             let n = 0;
             if(this.winner) this.previousWinners.push(this.winner);
+            if (this.winningNumber>=0) this.removeTicket(this.winningNumber);
+            this.wColor = 'red';
             for(let i =10; i<100; i++){
                 setTimeout(()=>{
-                    n = ~~(Math.random() * (this.tickets.length + 1));
+                    n = ~~(Math.random() * (this.tickets.length));
                     this.winner = this.tickets[n];
+                    this.winningNumber = n;
                 },40000/i)
             }
-            this.removeTicket(n);
+            setTimeout(()=>{
+                this.wColor = 'green';
+                this.drawing = false;
+            },4000)
         },
         undoDrawing(i) {
             this.tickets = this.tickets.concat(this.previousWinners[i]);
@@ -42,5 +52,6 @@ var app = new Vue({
         }
     },
     created() {
+        this.tickets = ['Torkel','Marina','Karen','Marta','Rune','Ingunn']
     }
 });
