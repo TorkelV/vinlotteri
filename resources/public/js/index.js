@@ -45,6 +45,8 @@ var app = new Vue({
         },
         undoDrawing(i) {
             this.tickets = this.tickets.concat(this.previousWinners[i]);
+            this.winningNumber = -1;
+            this.winner = false;
             this.previousWinners.splice(i, 1);
         },
         removeTicket(draw) {

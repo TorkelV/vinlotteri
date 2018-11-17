@@ -25,7 +25,8 @@ body{
     border-radius: 10px;
     margin: 10px auto;
     padding: 10px;
-    width: 600px;
+    max-width:550px;
+    width: 100%;
 }
 
 #phone{
@@ -55,7 +56,8 @@ body{
 
 #app{
     border-radius: 25px;
-    width:600px;
+    max-width:550px;
+    width: 100%;
     display:table;
     margin: 0 auto;
     padding: 20px;
