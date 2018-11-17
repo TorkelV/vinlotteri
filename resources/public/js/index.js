@@ -52,6 +52,5 @@ var app = new Vue({
         }
     },
     created() {
-        this.tickets = ['Torkel','Marina','Karen','Marta','Rune','Ingunn']
     }
 });
